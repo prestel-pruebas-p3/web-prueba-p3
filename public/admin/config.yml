@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: prestel-pruebas-p3/web-prueba-p3
+  branch: main
+publish_mode: editorial_workflow
+show_preview_links: true
+locale: es
+media_folder: public/images
+public_folder: /images
+collections:
+  - name: portada
+    label: Portada
+    files:
+      - name: home
+        label: Textos de portada
+        file: src/data/home.json
+        fields:
+          - { name: titulo, label: Título, widget: string }
+          - { name: subtitulo, label: Subtítulo, widget: text }
+          - { name: telefono, label: Teléfono de contacto, widget: string }
+          - { name: imagen, label: Imagen principal, widget: image, required: false }
+          - name: faqs
+            label: Preguntas frecuentes
+            widget: list
+            fields:
+              - { name: pregunta, label: Pregunta, widget: string }
+              - { name: respuesta, label: Respuesta, widget: text }
+  - name: habitaciones
+    label: Habitaciones
+    folder: src/data/habitaciones
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: estado, label: Estado, widget: string }
+      - { name: imagen, label: Foto, widget: image, required: false }
+      - { name: body, label: Descripción, widget: markdown }
